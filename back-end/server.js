@@ -5,8 +5,14 @@ const { Configuration, OpenAIApi } = require('openai');
 const cors = require('cors');
 
 const app = express();
-
-app.use(cors());
+const corsOptions = {
+    origin: 'https://sunnyb-oy.github.io', // replace with the origin of your front-end
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+  
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const configuration = new Configuration({
